@@ -10,7 +10,7 @@ if (isset($_POST['register'])) {
     $query->bindParam("email", $email, PDO::PARAM_STR);
     $query->execute();
     if ($query->rowCount() > 0) {
-        echo '<p class="error">Email já resgistrado!</p>';
+        echo '<p class="alert alert-warning text-center error">Email já resgistrado!</p>';
     }
     if ($query->rowCount() == 0) {
         $query = $connection->prepare("INSERT INTO usuario(nome,senha,email) VALUES (:nome,:password_hash,:email)");
@@ -19,9 +19,9 @@ if (isset($_POST['register'])) {
         $query->bindParam("email", $email, PDO::PARAM_STR);
         $result = $query->execute();
         if ($result) {
-            echo '<p class="success">Registrado com sucesso!</p>';
+            echo '<p class="alert alert-info text-center success">Registrado com sucesso!</p>';
         } else {
-            echo '<p class="error">Algo deu errado!</p>';
+            echo '<p class="alert alert-warning text-center error">Algo deu errado!</p>';
         }
     }
 }

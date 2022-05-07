@@ -9,14 +9,14 @@ if (isset($_POST['login'])) {
   $query->execute();
   $result = $query->fetch(PDO::FETCH_ASSOC);
   if (!$result) {
-    echo '<p class="error">Senha ou email errado!</p>';
+    echo '<p class="alert alert-warning text-center error">Senha ou email incorreto!</p>';
   } else {
     if (password_verify($password, $result['senha'])) {
       $_SESSION['user_id'] = $result['id'];
       header('Location: nutriform.php');
       echo '<html </html>';
     } else {
-      echo '<p class="error">Username password combination is wrong!</p>';
+      echo '<p class="alert alert-warning text-center error">Senha ou email incorreto!</p>';
     }
   }
 }

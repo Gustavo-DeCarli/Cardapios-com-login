@@ -4,7 +4,7 @@ include('conn.php');
 if (isset($_POST['login'])) {
   $email = $_POST['email'];
   $password = $_POST['senha'];
-  $query = $connection->prepare("SELECT * FROM usuario WHERE email=:email");
+  $query = $connection->prepare("SELECT * FROM nutricionista WHERE email=:email");
   $query->bindParam("email", $email, PDO::PARAM_STR);
   $query->execute();
   $result = $query->fetch(PDO::FETCH_ASSOC);
@@ -40,24 +40,8 @@ if (isset($_POST['login'])) {
 
 <body class="container-fluid ">
 
-
-
-
-  <!-- <form method="post" action="" name="signin-form">
-    <div class="form-element">
-      <label>Email</label>
-      <input type="email" name="email" required />
-    </div>
-    <div class="form-element">
-      <label>Senha</label>
-      <input type="password" name="senha" required />
-    </div>
-    <button type="submit" name="login" value="login">Log In</button>
-  </form> -->
-
-
   <form class="container w-25 p-3" method="post" align="center">
-    <h1 style="text-align: center;">Login Funcionário</h1>
+    <h1 style="text-align: center;">Login Nutricionista</h1>
     <div class="form-outline mb-4">
       <input type="email" name="email" class="form-control" />
       <label class="form-label" for="form2Example1">Email</label>
@@ -80,7 +64,7 @@ if (isset($_POST['login'])) {
 
 
       <div class="text-center">
-        <p>Não tem uma conta? <a href="register.php">Registrar-se</a></p>
+        <p>Não tem uma conta? <a href="registernutri.php">Registrar-se</a></p>
       </div>
   </form>
 

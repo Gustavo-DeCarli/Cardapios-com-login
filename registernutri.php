@@ -5,18 +5,20 @@ if (isset($_POST['register'])) {
   $username = $_POST['nome'];
   $email = $_POST['email'];
   $password = $_POST['senha'];
+  $CRN = $_POST['crn'];
   $password_hash = password_hash($password, PASSWORD_BCRYPT);
-  $query = $connection->prepare("SELECT * FROM usuario WHERE email=:email");
+  $query = $connection->prepare("SELECT * FROM nutricionista WHERE email=:email");
   $query->bindParam("email", $email, PDO::PARAM_STR);
   $query->execute();
   if ($query->rowCount() > 0) {
     echo '<p class="alert alert-warning text-center error">Email já resgistrado!</p>';
   }
   if ($query->rowCount() == 0) {
-    $query = $connection->prepare("INSERT INTO usuario(nome,senha,email) VALUES (:nome,:password_hash,:email)");
+    $query = $connection->prepare("INSERT INTO nutricionista(nome,senha,email,crn) VALUES (:nome,:password_hash,:email,:crn)");
     $query->bindParam("nome", $username, PDO::PARAM_STR);
     $query->bindParam("password_hash", $password_hash, PDO::PARAM_STR);
     $query->bindParam("email", $email, PDO::PARAM_STR);
+    $query->bindParam("crn", $CRN, PDO::PARAM_STR);
     $result = $query->execute();
     if ($result) {
       echo '<p class="alert alert-info text-center success">Registrado com sucesso!</p>';
@@ -57,6 +59,11 @@ if (isset($_POST['register'])) {
     </div>
 
     <div class="form-outline mb-4">
+      <input type="text" name="crn" class="form-control" />
+      <label class="form-label" for="form2Example1">CRN</label>
+    </div>
+
+    <div class="form-outline mb-4">
       <input type="password" name="senha" class="form-control" />
       <label class="form-label" for="form2Example2">Senha</label>
     </div>
@@ -68,7 +75,7 @@ if (isset($_POST['register'])) {
       <button class="btn btn-primary btn-block mb-4" type="submit" name="register" value="register">Register</button>
 
       <div class="text-center">
-        <p>Já tem uma conta? <a href="login.php">Entrar</a></p>
+        <p>Já tem uma conta? <a href="loginnutri.php">Entrar</a></p>
       </div>
   </form>
 

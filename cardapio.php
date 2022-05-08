@@ -1,3 +1,22 @@
+<?php
+
+
+session_start();
+if (!isset($_SESSION['user_id'])) {
+  echo '<script type="text/javascript">';
+  echo 'alert("Login necessário");';
+  echo 'window.location.href = "login.php";';
+  echo '</script>';
+  exit;
+}
+
+if (isset($_POST['logout'])) {
+  session_destroy();
+  header('Location: index.php');
+}
+
+?>
+
 <!doctype html>
 <html lang="pt-BR">
   <head>

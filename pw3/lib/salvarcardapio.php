@@ -2,9 +2,10 @@
 require "class_comidinhahmmm.php";
 
 try {
-    $p = new Item();
-    $p->setdescricao_item($_POST['item']);
-    $p->setcaloria_item($_POST['calorias1']);
+    $p = new Cardapio();
+    $p->setNome($_POST['nome']);
+    $p->settipo($_POST['tipo']);
+    $p->setdata($_POST['data']);
     $p->inserir();
     print $p;
 }catch(Exception $e){

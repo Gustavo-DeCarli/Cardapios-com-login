@@ -5,6 +5,7 @@ require "conn.php";
 class Cardapio
 {
     private $id = "";
+    private $nome = "";
     private $tipo = "";
     private $data = "";
 
@@ -13,7 +14,7 @@ class Cardapio
             "id" => $this->id,
             "nome" => $this->nome,
             "tipo" => $this->tipo,
-            "data" => $this->data,
+            "data" => $this->data
         ]);
     }
 
@@ -35,9 +36,10 @@ class Cardapio
     function inserir()
     {
         $connection = DB::getInstance();
-        $consulta = $connection->prepare("INSERT INTO cardapio(tipo, data) VALUES(:tipo,:data)");
+        $consulta = $connection->prepare("INSERT INTO cardapio(nome, tipo, data) VALUES(:nome,:tipo,:data)");
         $consulta->execute([
-            ':tipo' => $this->nome,
+            ':nome' => $this->nome,
+            ':tipo' => $this->tipo,
             ':data' => $this->data
         ]);
         $consulta = $connection->prepare("SELECT id FROM cardapio ORDER BY id DESC LIMIT 1");
@@ -49,9 +51,10 @@ class Cardapio
     function alterar()
     {
         $connection = DB::getInstance();
-        $consulta = $connection->prepare("UPDATE cardapio SET tipo = :tipo, data = :data WHERE id= :id");
+        $consulta = $connection->prepare("UPDATE cardapio SET nome = :nome, tipo = :tipo, data = :data WHERE id= :id");
         $consulta->execute([
             ':id' => $this->id,
+            ':nome' => $this->nome,
             ':tipo' => $this->tipo,
             ':data' => $this->data
         ]);
@@ -96,6 +99,7 @@ class Ingrediente
     function inserir()
     {
         try {
+            
             $connection = DB::getInstance();
             $consulta = $connection->prepare("INSERT INTO ingredientes(descricao, calorias) VALUES(:descricao, :calorias)");
             $consulta->execute([
@@ -155,9 +159,9 @@ function __toString(){
     private $calorias_item = "";
 
     function setdescricao_item($v) {$this->descricao_item = $v;}
-    function setcalorias_item($v){$this->calorias_item = $v;}
+    function setcaloria_item($v){$this->calorias_item = $v;}
     function getdescricao_item(){return $this->descricao_item;}
-    function getcalorias_item(){return $this->calorias_item;}
+    function getcaloria_item(){return $this->calorias_item;}
 
     static function findByPk($id){
         $connection = DB::getInstance();
@@ -173,7 +177,7 @@ function __toString(){
             $connection = DB::getInstance();
             $consulta = $connection->prepare("INSERT INTO item(descricao, calorias) VALUES(:descricao, :calorias)");
             $consulta->execute([
-                ':descricao' => $this->calorias_item,
+                ':descricao' => $this->descricao_item,
                 ':calorias' => $this->calorias_item
             ]);
             $consulta = $connection->prepare("SELECT id FROM item ORDER BY id DESC LIMIT 1");

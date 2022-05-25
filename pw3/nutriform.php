@@ -84,8 +84,8 @@ if (isset($_POST['logout'])) {
             <input type="text" class="form-control" id="item" placeholder="Entre com o nome do ingrediente">
           </div>
           <div class="mb-3">
-            <label for="calorias" class="form-label">Calorias</label>
-            <input type="text" class="form-control" id="calorias" placeholder="Insira as calorias do alimento">
+            <label for="calorias1" class="form-label">Calorias</label>
+            <input type="text" class="form-control" id="calorias1" placeholder="Insira as calorias do alimento">
           </div>
         </div>
         <div class="modal-footer">
@@ -99,11 +99,11 @@ if (isset($_POST['logout'])) {
 
 
   <!-- Novo cardápio -->
-  <button id="novo" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <button id="novo" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal3">
     Novo cardápio
   </button>
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -113,22 +113,22 @@ if (isset($_POST['logout'])) {
         <div class="modal-body">
           <input type="hidden" id="id" />
           <div class="mb-3">
-            <label for="cardapio" class="form-label">Nome cardápio</label>
-            <input type="text" class="form-control" id="cardapio" placeholder="Entre com o nome do ingrediente">
+            <label for="nome" class="form-label">Nome cardápio</label>
+            <input type="text" class="form-control" id="nome" placeholder="Entre com o nome do ingrediente">
           </div>
           <div class="mb-3">
             <label for="tipo" class="form-label">Tipo</label>
             <input type="text" class="form-control" id="tipo" placeholder="Insira o tipo do cardápio">
           </div>
           <div class="mb-3">
-            <label for="calorias" class="form-label">Data</label>
+            <label for="data" class="form-label">Data</label>
             <input type="date" class="form-control" id="data" placeholder="Insira as calorias do alimento">
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
           <button id="salvar3" type="button" class="btn btn-success">Salvar</button>
-          <button id="alterar" type="button" class="btn btn-success">Alterar</button>
+          <button id="alterar3" type="button" class="btn btn-success">Alterar</button>
         </div>
       </div>
     </div>
@@ -136,7 +136,7 @@ if (isset($_POST['logout'])) {
 
 
 
-  
+
 
 
 

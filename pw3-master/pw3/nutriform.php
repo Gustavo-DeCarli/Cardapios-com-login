@@ -160,22 +160,23 @@ if (isset($_POST['logout'])) {
   </div>
 </div>
 
-<table id="example" class="table table-striped" style="width:100%">
-        <thead>
-            <tr>
-                <th>Tipo</th>
-                <th>Data</th>
-                <th>Cardápio</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-            </tr>
-</table>
-
+<div class="container container-fluid">
+  <table id="example" class="table table-striped" style="width:100%">
+    <thead>
+      <tr>
+        <th>Tipo</th>
+        <th>Data</th>
+        <th>Cardápio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Tiger Nixon</td>
+        <td>System Architect</td>
+        <td>Edinburgh</td>
+      </tr>
+  </table>
+</div>
 
 <script src="frontend/script.js"></script>
 </body>

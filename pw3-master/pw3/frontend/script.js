@@ -55,6 +55,14 @@ onload = async () => {
 
     btnSalvar3.addEventListener("click", async () => {
         
+        const itens = document.getElementsByName('itens')
+        const ids = []
+        itens.forEach(item => {
+            if (item.value > 0)
+                ids.push(+item.value)
+        })
+
+        console.log(ids)
         const nome = document.getElementById("nome").value
         const tipo = document.getElementById("tipo").value
         const data = document.getElementById("data").value
@@ -63,6 +71,7 @@ onload = async () => {
         body.append('nome', nome)
         body.append('tipo', tipo)
         body.append('data', data)
+        body.append('itens', ids)
 
         const response = await fetch(`${baseUrl}salvarcardapio.php`, {
             method: "POST",
@@ -81,8 +90,10 @@ const criarSelect = async () => {
     //  const items = [{id: 1, 'name': 'Feijão'}, {id: 2, 'name': 'Arroz'}, {id: 3, 'name': 'Farinha'}]
     
     const response = await fetch(`${baseUrl}listaItens.php`)
-    const items = await JSON.parse(response)
+    const items = await response.json()
+    
     const select = document.createElement('select')
+    select.setAttribute('name', 'itens')
     select.addEventListener('change', async function(){
         escolhidos.push(+this.value)
         console.log(escolhidos)
@@ -90,14 +101,15 @@ const criarSelect = async () => {
     } )
     select.style.color = "black"
     const option = document.createElement("OPTION")
+    option.setAttribute('value', -1) 
     option.innerHTML = "Selecione"
     select.appendChild(option)
-    items.forEach(({id, name}) => {
+    items.forEach(({id, descricao, calorias}) => {
         console.log(escolhidos.includes(id), id)
         if (!escolhidos.includes(id)) {
         const option = document.createElement("OPTION")
         option.setAttribute('value', id)
-        option.innerHTML = name
+        option.innerHTML = `${descricao} (${calorias} cal)`
         select.appendChild(option)
         }
     })

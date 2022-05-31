@@ -1,5 +1,4 @@
 <?php
-
 require "conn.php";
 
 class Cardapio
@@ -71,9 +70,6 @@ class Cardapio
         $consulta->execute([':id' => $this->id]);
     }
 }
-
-
-
 
 class Ingrediente
 {
@@ -149,10 +145,6 @@ class Ingrediente
     }
 }
 
-
-
-
-
 class Item
 {
 
@@ -225,13 +217,14 @@ function __toString(){
         }
     }
 
-    function listar()
+    static function listar()
     {
         try {
             $connection = DB::getInstance();
-            $consulta = $connection->prepare("SELECT descricao, calorias FROM item");
+            $consulta = $connection->prepare("SELECT id, descricao, calorias FROM item");
             $consulta->execute();
-            $consulta->fetch(PDO::FETCH_ASSOC);
+            return  $consulta->fetchAll(PDO::FETCH_ASSOC);
+            
         } catch (PDOException $e) {
             die($e->getMessage());
         }

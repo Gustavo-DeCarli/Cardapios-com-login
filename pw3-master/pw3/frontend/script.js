@@ -76,8 +76,9 @@ onload = async () => {
 
 const escolhidos = []
 
+
 const criarSelect = async () => {
-    //const items = [{id: 1, 'name': 'Feijão'}, {id: 2, 'name': 'Arroz'}, {id: 3, 'name': 'Farinha'}]
+    //  const items = [{id: 1, 'name': 'Feijão'}, {id: 2, 'name': 'Arroz'}, {id: 3, 'name': 'Farinha'}]
     
     const response = await fetch(`${baseUrl}listaItens.php`)
     const items = await JSON.parse(response)
@@ -87,7 +88,7 @@ const criarSelect = async () => {
         console.log(escolhidos)
         await criarSelect()
     } )
-    select.style.color = "white"
+    select.style.color = "black"
     const option = document.createElement("OPTION")
     option.innerHTML = "Selecione"
     select.appendChild(option)

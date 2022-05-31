@@ -7,6 +7,7 @@ try {
     $p->settipo($_POST['tipo']);
     $p->setdata($_POST['data']);
     $p->setcardapio($_POST['cardapio']);
+    $p->setcardapio($_POST['select']);
     $p->inserir();
     print $p;
 }catch(Exception $e){

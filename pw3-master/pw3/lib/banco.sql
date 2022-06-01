@@ -43,3 +43,12 @@ descricao VARCHAR(120) NOT NULL,
 calorias FLOAT NOT NULL,
 PRIMARY KEY(id)
 );
+
+CREATE TABLE cardapioid(
+    id INT NOT NULL AUTO_INCREMENT,
+    iditem INT NOT NULL,
+    PRIMARY KEY(id)
+);
+ALTER TABLE cardapioid ADD CONSTRAINT `fk_cardapio2` FOREIGN KEY ( iditem ) REFERENCES item ( `id` );
+
+ALTER TABLE cardapio ADD CONSTRAINT `fk_cardapio` FOREIGN KEY ( descricao ) REFERENCES item ( `descricao` ) where id = iditem ;

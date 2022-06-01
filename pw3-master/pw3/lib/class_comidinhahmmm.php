@@ -1,6 +1,37 @@
 <?php
 require "conn.php";
 
+class Cardapioid{
+    private $id = "";
+    private $iditem = "";
+
+    function __toString(){
+        return json_encode([
+            "id" => $this->id,
+            "iditem" => $this->iditem,
+        ]);
+    }
+
+    function setiditem($v) {$this->iditem = $v;}
+    function getiditem(){return $this->iditem;}
+
+
+    function inserir()
+    {
+        $connection = DB::getInstance();
+        $consulta = $connection->prepare("INSERT INTO cardapioid (iditem) VALUES(:iditem)");
+        $consulta->execute([
+            ':iditem' => $this->iditem,
+        ]);
+        $consulta = $connection->prepare("SELECT id FROM cardapioid ORDER BY id DESC LIMIT 1");
+        $consulta->execute();
+        $dat = $consulta->fetch(PDO::FETCH_ASSOC);
+        $this->id = $dat['id'];
+    }
+
+
+}
+
 class Cardapio
 {
     private $id = "";
@@ -14,7 +45,6 @@ class Cardapio
             "nome" => $this->nome,
             "tipo" => $this->tipo,
             "data" => $this->data,
-            "cardapio" => $this->cardapio
         ]);
     }
 
@@ -25,7 +55,6 @@ class Cardapio
     function getNome(){return $this->nome;}
     function getdata(){return $this->data;}
     function gettipo(){return $this->tipo;}
-    function getcardapio(){return $this->cardapio;}
 
     static function findByPk($id){
         $connection = DB::getInstance();
@@ -38,12 +67,11 @@ class Cardapio
     function inserir()
     {
         $connection = DB::getInstance();
-        $consulta = $connection->prepare("INSERT INTO cardapio(nome, tipo, data, cardapio) VALUES(:nome,:tipo,:data,:cardapio)");
+        $consulta = $connection->prepare("INSERT INTO cardapio(nome, tipo, data) VALUES(:nome,:tipo,:data)");
         $consulta->execute([
             ':nome' => $this->nome,
             ':tipo' => $this->tipo,
             ':data' => $this->data,
-            ':cardapio' => $this->cardapio
         ]);
         $consulta = $connection->prepare("SELECT id FROM cardapio ORDER BY id DESC LIMIT 1");
         $consulta->execute();

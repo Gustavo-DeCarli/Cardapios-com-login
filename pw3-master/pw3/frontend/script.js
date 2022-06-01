@@ -93,7 +93,7 @@ const criarSelect = async () => {
     const items = await response.json()
     
     const select = document.createElement('select')
-    select.setAttribute('name', 'itens')
+    select.setAttribute('name', 'iditem')
     select.addEventListener('change', async function(){
         escolhidos.push(+this.value)
         console.log(escolhidos)

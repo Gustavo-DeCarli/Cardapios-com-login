@@ -3,13 +3,16 @@ require "class_comidinhahmmm.php";
 
 var_dump($_POST);
 try {
-    $p = new Cardapio();
-    $p->setNome($_POST['nome']);
-    $p->settipo($_POST['tipo']);
-    $p->setdata($_POST['data']);
-    $p->setcardapio($_POST['itens']);
+    $p = new Cardapioid();
+    $p->setiditem($_POST['itens']);
     $p->inserir();
     print $p;
+    $s = new Cardapio();
+    $s->setNome($_POST['nome']);
+    $s->settipo($_POST['tipo']);
+    $s->setdata($_POST['data']);
+    $s->inserir();
+    print $s;
 }catch(Exception $e){
     print json_encode([
         "error" => true,

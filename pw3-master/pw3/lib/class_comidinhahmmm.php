@@ -38,6 +38,7 @@ class Cardapio
     private $nome = "";
     private $tipo = "";
     private $data = "";
+    private $itens = "";
 
     function __toString(){
         return json_encode([
@@ -85,9 +86,6 @@ class Cardapio
             $consulta->execute();
             $dat = $consulta->fetch(PDO::FETCH_ASSOC);
             $this->id = $dat['id'];
-
-            throw new Exception("Deu erro aqui");
-
             foreach($this->itens as $item){
                 $consulta = $connection->prepare("INSERT INTO cardapioid(iditem, idcardapio) VALUES(:iditem,:idcardapio)");
                 $consulta->execute([

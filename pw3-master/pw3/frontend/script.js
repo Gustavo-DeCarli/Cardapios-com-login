@@ -73,6 +73,9 @@ onload = async () => {
         body.append('data', data)
         body.append('itens', ids)
 
+        console.log(body)
+        console.log(ids,itens)
+
         const response = await fetch(`${baseUrl}salvarcardapio.php`, {
             method: "POST",
             body
@@ -151,7 +154,7 @@ const criarSelect = async () => {
     
     const select = document.createElement('select')
     select.setAttribute('class', 'form-select')
-    select.setAttribute('name', 'iditem')
+    select.setAttribute('name', 'itens')
     select.addEventListener('change', async function(){
         escolhidos.push(+this.value)
         console.log(escolhidos)

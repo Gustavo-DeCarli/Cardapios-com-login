@@ -181,23 +181,25 @@ require 'lib/conn.php';
 
 $connection = DB::getInstance();
 $stmt = $connection->query("SELECT * from cardapio");
-$dados = $stmt->fetch();
+$dados11 = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-foreach ($dados as $dados) {
+foreach ($dados11 as $dados) {
+  
   $table  = '<table>';
   $table .= '<thead>';
   $table .= '<tr>';
-  $table .= "<td>{$dados->nome}</td>";
-  $table .= "<td>{$dados->tipo}</td>";
-  $table .= "<td>{$dados->data}</td>";
+  $table .= "<td>{$dados['nome']}</td>";
+  $table .= "<td>{$dados['tipo']}</td>";
+  $table .= "<td>{$dados['data']}</td>";
   $table .= '</tr>';
   $table .= '</thead>';
   $table .= '<tbody>';
   $pesq2 = $connection->query("SELECT descricao, calorias FROM item INNER JOIN cardapioid ON item.id = cardapioid.iditem INNER JOIN cardapio ON cardapio.id = cardapioid.idcardapio");
-  $dados2 = $pesq2->fetch();
+  $dados2 = $pesq2->fetch(PDO::FETCH_ASSOC);
+  
   $table .= '<tr>';
-  $table .= "<td>{$dados2->descricao}</td>";
-  $table .= "<td>{$dados2->calorias}</td>";
+  $table .= "<td>{$dados2['descricao']}</td>";
+  $table .= "<td>{$dados2['calorias']}</td>";
   $table .= '</tr>';
   $table .= '</tbody>';
   $table .= '</table>';

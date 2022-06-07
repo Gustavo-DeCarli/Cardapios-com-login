@@ -45,6 +45,7 @@ class Cardapio
             "nome" => $this->nome,
             "tipo" => $this->tipo,
             "data" => $this->data,
+            "itens" => $this->itens
         ]);
     }
 
@@ -54,6 +55,10 @@ class Cardapio
     function getNome(){return $this->nome;}
     function getdata(){return $this->data;}
     function gettipo(){return $this->tipo;}
+
+    function setItens($itens){
+        $this->itens = explode(",", $itens);
+    }
 
     static function findByPk($id){
         $connection = DB::getInstance();
@@ -66,16 +71,38 @@ class Cardapio
     function inserir()
     {
         $connection = DB::getInstance();
-        $consulta = $connection->prepare("INSERT INTO cardapio(nome, tipo, data) VALUES(:nome,:tipo,:data)");
-        $consulta->execute([
-            ':nome' => $this->nome,
-            ':tipo' => $this->tipo,
-            ':data' => $this->data,
-        ]);
-        $consulta = $connection->prepare("SELECT id FROM cardapio ORDER BY id DESC LIMIT 1");
-        $consulta->execute();
-        $dat = $consulta->fetch(PDO::FETCH_ASSOC);
-        $this->id = $dat['id'];
+        try{
+            
+            $consulta = $connection->prepare("START TRANSACTION;");
+            $consulta->execute();
+            $consulta = $connection->prepare("INSERT INTO cardapio(nome, tipo, data) VALUES(:nome,:tipo,:data)");
+            $consulta->execute([
+                ':nome' => $this->nome,
+                ':tipo' => $this->tipo,
+                ':data' => $this->data,
+            ]);
+            $consulta = $connection->prepare("SELECT id FROM cardapio ORDER BY id DESC LIMIT 1");
+            $consulta->execute();
+            $dat = $consulta->fetch(PDO::FETCH_ASSOC);
+            $this->id = $dat['id'];
+
+            throw new Exception("Deu erro aqui");
+
+            foreach($this->itens as $item){
+                $consulta = $connection->prepare("INSERT INTO cardapioid(iditem, idcardapio) VALUES(:iditem,:idcardapio)");
+                $consulta->execute([
+                    ':iditem' => $item,
+                    ':idcardapio' => $this->id,
+                ]); 
+            }
+            $consulta = $connection->prepare("COMMIT;");
+            $consulta->execute();
+        }catch(Exception $e){
+            $consulta = $connection->prepare("ROLLBACK;");
+            $consulta->execute();
+            die($e->getMessage());
+        }
+        
     }
 
     function alterar()

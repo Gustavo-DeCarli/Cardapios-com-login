@@ -186,7 +186,7 @@ $dados11 = $stmt->fetchAll();
 $table = "";
 foreach ($dados11 as $dados) {
   $table .= '<div class="container container-fluid">';
-  $table .= '<table id="example class="table table-strped table-bordered" style="width:100%">';
+  $table .= '<table id="example" class="table table-strped table-bordered" style="width:100%">';
   $table .= '<thead>';
   $table .= '<tr>';
   $table .= "<td>{$dados['nome']}</td>";

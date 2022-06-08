@@ -1,0 +1,64 @@
+
+
+body{
+
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(220,220,220);
+
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+}
+
+.logo {
+    cursor: pointer;
+    max-width: 20%;
+    height: auto;
+}
+
+.nav__links {
+    list-style: none;
+}
+
+.nav__links li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.nav__links li a{
+    transition: all 0.3s ease 0s;
+}
+
+.btn-new{
+
+    padding: 9px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    border-color: #A9A9A9;
+
+}
+
+.btn-logout{
+   
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    border-color: #A9A9A9;
+
+}
+
+#email{
+
+    border-color: black;
+}
+
+option{
+  color: black;  
+}

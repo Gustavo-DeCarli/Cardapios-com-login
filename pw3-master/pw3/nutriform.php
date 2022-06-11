@@ -32,121 +32,119 @@ include 'navbar.html';
   <link href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" rel="stylesheet" crossorigin="anonymous">
   <title>Cardapio RU</title>
 </head>
+
 <body>
 
 
-<!-- Novo ingrediente -->
+  <!-- Novo ingrediente -->
 
 
-<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Novo Ingrediente</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <input type="hidden" id="id" />
+  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Novo Ingrediente</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="id" />
 
-        <div class="mb-3">
-          <label for="ingrediente" class="form-label">Nome Ingrediente</label>
-          <input type="text" class="form-control" id="ingrediente" placeholder="Entre com o nome do ingrediente">
+          <div class="mb-3">
+            <label for="ingrediente" class="form-label">Nome Ingrediente</label>
+            <input type="text" class="form-control" id="ingrediente" placeholder="Entre com o nome do ingrediente">
+          </div>
+
+          <div class="mb-3">
+            <label for="calorias" class="form-label">Calorias</label>
+            <input type="text" class="form-control" id="calorias" placeholder="Insira as calorias do alimento">
+          </div>
         </div>
 
-        <div class="mb-3">
-          <label for="calorias" class="form-label">Calorias</label>
-          <input type="text" class="form-control" id="calorias" placeholder="Insira as calorias do alimento">
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+          <button id="salvar1" type="button" class="btn btn-success">Salvar</button>
         </div>
-      </div>
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-        <button id="salvar1" type="button" class="btn btn-success">Salvar</button>
-        <button id="excluir1" type="button" class="btn btn-danger">Excluir</button>
       </div>
-
     </div>
   </div>
-</div>
 
 
-<!-- Novo item -->
+  <!-- Novo item -->
 
 
-<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Novo Item</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <input type="hidden" id="id" />
+  <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Novo Item</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="id" />
 
-        <div class="mb-3">
-          <label for="item" class="form-label">Nome Item</label>
-          <input type="text" class="form-control" id="item" placeholder="Entre com o nome do ingrediente">
+          <div class="mb-3">
+            <label for="item" class="form-label">Nome Item</label>
+            <input type="text" class="form-control" id="item" placeholder="Entre com o nome do ingrediente">
+          </div>
+
+          <div class="mb-3">
+            <label for="calorias1" class="form-label">Calorias</label>
+            <input type="text" class="form-control" id="calorias1" placeholder="Insira as calorias do alimento">
+          </div>
         </div>
 
-        <div class="mb-3">
-          <label for="calorias1" class="form-label">Calorias</label>
-          <input type="text" class="form-control" id="calorias1" placeholder="Insira as calorias do alimento">
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+          <button id="salvar2" type="button" class="btn btn-success">Salvar</button>
         </div>
-      </div>
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-        <button id="salvar2" type="button" class="btn btn-success">Salvar</button>
-        <button id="excluir2" type="button" class="btn btn-danger">Excluir</button>
       </div>
-
     </div>
   </div>
-</div>
 
 
-<!-- Novo cardapio -->
+  <!-- Novo cardapio -->
 
 
-<div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Novo cardápio</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Novo cardápio</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <input type="hidden" id="id" />
+          <div class="mb-3">
+            <label for="nome" class="form-label">Nome cardápio</label>
+            <input type="text" class="form-control" id="nome" placeholder="Entre com o nome do ingrediente">
+          </div>
+          <div class="mb-3">
+            <label for="tipo" class="form-label">Tipo</label>
+            <input type="text" class="form-control" id="tipo" placeholder="Insira o tipo do cardápio">
+          </div>
+          <div class="mb-3">
+            <label for="data" class="form-label ">Data</label>
+            <input type="date" class="form-control" id="data" placeholder="Insira as calorias do alimento">
+          </div>
+
+          <div class="mb-3">
+            <form id="form_produto" name="produto" method="POST" action="">
+              <label class="form-label " for="">Selecione um item</label>
+            </form>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+          <button id="salvar3" type="button" class="btn btn-success">Salvar</button>
+        </div>
+
       </div>
-
-      <div class="modal-body">
-        <input type="hidden" id="id" />
-        <div class="mb-3">
-          <label for="nome" class="form-label">Nome cardápio</label>
-          <input type="text" class="form-control" id="nome" placeholder="Entre com o nome do ingrediente">
-        </div>
-        <div class="mb-3">
-          <label for="tipo" class="form-label">Tipo</label>
-          <input type="text" class="form-control" id="tipo" placeholder="Insira o tipo do cardápio">
-        </div>
-        <div class="mb-3">
-          <label for="data" class="form-label ">Data</label>
-          <input type="date" class="form-control" id="data" placeholder="Insira as calorias do alimento">
-        </div>
-
-        <div class="mb-3">
-          <form id="form_produto" name="produto" method="POST" action="">
-            <label class="form-label " for="">Selecione um item</label>
-          </form>
-        </div>
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-        <button id="salvar3" type="button" class="btn btn-success">Salvar</button>
-        <button id="excluir3" type="button" class="btn btn-danger">Excluir</button>
-      </div>
-
     </div>
   </div>
-</div>
 
 
   <?php
@@ -158,9 +156,9 @@ include 'navbar.html';
   $dados11 = $stmt->fetchAll();
 
   $cardapios = [];
-  foreach($dados11 as $d){
-    if (array_key_exists($d['id'], $cardapios)){
-      $cardapios[$d['id']]['itens'][] = ['descricao' => $d['descricao'], 'calorias' => $d['calorias']]; 
+  foreach ($dados11 as $d) {
+    if (array_key_exists($d['id'], $cardapios)) {
+      $cardapios[$d['id']]['itens'][] = ['descricao' => $d['descricao'], 'calorias' => $d['calorias']];
       continue;
     }
 
@@ -174,7 +172,7 @@ include 'navbar.html';
       ]
     ];
   }
-  
+
 
   $table = "";
   foreach ($cardapios as $dados) {
@@ -182,14 +180,16 @@ include 'navbar.html';
     $table .= '<table id="tabela" class="table table-strped table-bordered md-2" style="width:100%">';
     $table .= '<thead>';
     $table .= '<tr>';
+    $table .= "<input type='hidden' id='idcardapio-{$dados['id']}' value='{$dados['id']}'/>";
     $table .= "<td>{$dados['nome']}</td>";
     $table .= "<td>{$dados['tipo']}</td>";
     $table .= "<td>{$dados['data']}</td>";
+    $table .= "<td><button id='apagar-{$dados['id']}' class='p-1 apagar btn btn-danger'>Apagar</button></td>";
     $table .= '</tr>';
     $table .= '</thead>';
     $table .= '<tbody>';
     $table .= '<table id="example" class="table table-striped table-bordered" style="width:100%">';
-    foreach($dados['itens'] as $item){
+    foreach ($dados['itens'] as $item) {
       $table .= '<tr>';
       $table .= "<td>Comida: {$item['descricao']}</td>";
       $table .= "<td>Calorias: {$item['calorias']}CAL</td>";
@@ -203,6 +203,6 @@ include 'navbar.html';
   ?>
 
   <script src="frontend/script.js"></script>
-  </body>
+</body>
 
 </html>

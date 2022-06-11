@@ -9,12 +9,12 @@ try {
     $s->setdata($_POST['data']);
     $s->setItens($_POST['itens']);
     $s->inserir();
-    print $s;
+    header('location: nutriform.php');
+    ob_end_flush();
+    die();
 }catch(Exception $e){
     print json_encode([
         "error" => true,
         "message" => $e->getMessage()
     ]);
-}
-
-?>
+}?>

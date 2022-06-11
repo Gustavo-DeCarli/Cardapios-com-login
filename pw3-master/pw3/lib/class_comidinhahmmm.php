@@ -64,8 +64,8 @@ class Cardapio
     static function findByPk($id){
         $connection = DB::getInstance();
         $consulta = $connection->prepare("SELECT * FROM cardapio WHERE id=:id");
-        $consulta->execute([':id' => $id]);
         $consulta->setFetchMode(PDO::FETCH_CLASS, 'cardapio');
+        $consulta->execute([':id' => $id]);
         return $consulta->fetch();
     }
 
@@ -118,8 +118,10 @@ class Cardapio
     function remover()
     {
         $connection = DB::getInstance();
-        $consulta = $connection->prepare("DELETE * FROM cardapio WHERE nome = ':nome'");
-        $consulta->execute([':nome' => $this->nome]);
+        $consulta2 = $connection->prepare("DELETE FROM cardapioid WHERE idcardapio = :id");
+        $consulta2->execute([':id' => $this->id]);
+        $consulta = $connection->prepare("DELETE FROM cardapio WHERE id = :id");
+        $consulta->execute([':id' => $this->id]);
     }
 }
 

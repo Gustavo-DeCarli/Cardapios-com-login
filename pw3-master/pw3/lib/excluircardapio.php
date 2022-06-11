@@ -2,7 +2,7 @@
 require "class_comidinhahmmm.php";
 
 try {
-    $p = Cardapio::findByPk($_POST['id']);
+    $p = Cardapio::findByPk($_POST['idcardapio']);
     $p->remover();
     print $p;
 }catch(Exception $e){
@@ -11,5 +11,3 @@ try {
         "message" => $e->getMessage()
     ]);
 }
-
-?>
